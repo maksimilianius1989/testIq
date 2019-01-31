@@ -1,18 +1,280 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:scrolling_image_view = "http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="#ff7abee4"
+    android:id="@+id/activity_main">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <com.q42.android.scrollingimageview.ScrollingImageView
+        android:id="@+id/scrolling_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        scrolling_image_view:speed="1dp"
+        scrolling_image_view:src="@drawable/back_3" />
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rl_main_game"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:visibility="visible">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/fl_main_conteiner_game">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/pb_question_load"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_gravity="center"
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ll_question_top"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/gradient_topmenu"
+                    android:orientation="horizontal"
+                    android:paddingBottom="3.0dip"
+                    android:paddingTop="3.0dip">
+
+                    <FrameLayout
+                        android:layout_width="109.0dip"
+                        android:layout_height="30.0dip">
+
+                        <ImageView
+                            android:layout_width="109.0dip"
+                            android:layout_height="30.0dip"
+                            android:layout_gravity="left"
+                            android:src="@drawable/score_back"/>
+
+                        <TextView
+                            android:id="@+id/tv_question_count1"
+                            android:layout_width="75.0dip"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="30.0dip"
+                            android:gravity="center_vertical"
+                            android:text="0"
+                            android:textColor="#ffe4e4e4"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView"
+                            android:id="@+id/tv_question_count"/>
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/tv_user_level"
+                        android:layout_width="20.0dip"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="6.0dip"
+                        android:gravity="center"
+                        android:text="1"
+                        android:textColor="#ffe4e4e4"
+                        android:textStyle="bold"/>
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="30.0dip"
+                        android:layout_weight="1.0">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:src="@drawable/score_empty_back"/>
+
+                        <TextView
+                            android:id="@+id/tv_question_id"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="#ffe4e4e4"
+                            android:textStyle="bold"/>
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="30.0dip"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/money_back"/>
+
+                        <TextView
+                            android:layout_width="109.9dip"
+                            android:layout_height="30.0dip"
+                            android:gravity="center"
+                            android:text="253"
+                            android:textColor="#ffe4e4e4"
+                            android:textStyle="bold"/>
+                    </FrameLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="3.0dip"
+                    android:layout_marginTop="5.0dip"
+                    android:layout_marginRight="3.0dip"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tv_question_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:background="@drawable/gradient_question_text"
+                        android:gravity="center_horizontal"
+                        android:padding="5.0dip"
+                        android:text="..."
+                        android:textColor="@color/anser_key_text"
+                        android:textSize="16.0sp"/>
+                </LinearLayout>
+
+                <FrameLayout
+                    android:id="@+id/fl_game_timer"
+                    android:layout_width="match_parent"
+                    android:layout_height="50.0dip">
+
+                    <TextView
+                        android:id="@+id/tv_time_elapse"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="25.0sp"
+                        android:textStyle="bold"/>
+
+
+
+
+
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10.0dip"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+
+
+
+
+
+
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/tv_question_win_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10.0dip"
+                        android:gravity="center"
+                        android:text="Угадали"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="25.0dip"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/btn_answer_openkey"
+                            android:layout_width="155.0dip"
+                            android:layout_height="40dip"
+                            android:layout_marginTop="10.0dip"
+                            android:background="@drawable/btn_openkey_answer_selector"
+                            android:text="Ответить на букву №"
+                            android:textAllCaps="false"
+                            android:visibility="visible"/>
+
+                        <Button
+                            android:id="@+id/btn_answer_key"
+                            android:layout_width="155.0dip"
+                            android:layout_height="40.0dip"
+                            android:layout_marginTop="10.0dip"
+                            android:background="@drawable/btn_key_answer_selector"
+                            android:text="Ответить"
+                            android:textAllCaps="false"
+                            android:textSize="18.0sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/fl_question_keyboard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="50.0dip">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <ToggleButton
+                            android:id="@+id/btn_sound"
+                            android:layout_width="30.0dip"
+                            android:layout_height="30.0dip"
+                            android:layout_gravity="center|left"
+                            android:layout_margin="5.0dip"
+                            android:background="@drawable/sound_toggle"
+                            android:checked="true"
+                            android:textOff=""
+                            android:textOn=""/>
+
+                        <android.support.v4.widget.Space
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1.0"/>
+
+                        <Button
+                            android:id="@+id/btn_delete_key"
+                            android:layout_width="30.0dip"
+                            android:layout_height="30.0dip"
+                            android:layout_gravity="center|right"
+                            android:layout_margin="5.0dip"
+                            android:background="@drawable/ic_action_name"/>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </FrameLayout>
+        </FrameLayout>
+    </RelativeLayout>
+</RelativeLayout>

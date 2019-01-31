@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ParallaxView">
+        <attr name="initialState" format="integer"></attr>
+        <attr name="speedd" format="dimension"></attr>
+        <attr name="sceneLength" format="integer"></attr>
+        <attr name="randomnessResourceId" format="string"></attr>
+        <attr name="typedArray" format="string"></attr>
+        <attr name="speedee" format="dimension"></attr>
+        <attr name="srcc" format="string"></attr>
+    </declare-styleable>
+</resources>
